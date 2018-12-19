@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/diary?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#全局 若是值是null，就不会返回
+#  jackson:
+#    default-property-inclusion: non_null
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+server:
+  servlet:
+    context-path: /diary
+
+#不能用localhost,否则启动报异常:Unresolved address
+#tcp监听的端口
+tcp:
+  port: 8090
+# bossGroup的线程数
+boss:
+  thread:
+    count: 2
+# worker的线程数
+worker:
+  thread:
+    count: 2
+
+#是否使用长连接
+so:
+  keepalive:  true
+  backlog: 100
