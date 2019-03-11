@@ -29,11 +29,11 @@ import java.util.Set;
 @Configuration
 public class NettyConfig {
 
-    private int bossCount=2;
-    private int workerCount=2;
-    private int tcpPort=1992;
-    private boolean keepAlive=true;
-    private int backlog=100;
+    private int bossCount = 2;
+    private int workerCount = 2;
+    private int tcpPort = 1994;
+    private boolean keepAlive = true;
+    private int backlog = 100;
     //读取yml中配置
 //    @Value("${boss.thread.count}")
 //    private int bossCount;
@@ -53,6 +53,7 @@ public class NettyConfig {
     @Autowired
     @Qualifier("springProtocolInitializer")
     private StringProtocolInitalizer protocolInitalizer;
+
     //bootstrap配置
     @SuppressWarnings("unchecked")
     @Bean(name = "serverBootstrap")

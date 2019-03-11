@@ -55,17 +55,58 @@
             <artifactId>netty-all</artifactId>
             <version>5.0.0.Alpha2</version>
         </dependency>
-        <dependency>
-            <groupId>SpringBoot-Netty</groupId>
-            <artifactId>SpringBoot-Netty</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>SpringBoot-Netty</groupId>-->
+            <!--<artifactId>SpringBoot-Netty</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.54</version>
+        </dependency>
+
+        <!--极光推送-->
+        <dependency>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jpush-client</artifactId>
+            <version>3.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jiguang-common</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.google.code.gson</groupId>-->
+            <!--<artifactId>gson</artifactId>-->
+            <!--<version>2.3</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+            <!--<version>1.7.7</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; For log4j &ndash;&gt;-->
+        <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;<groupId>org.slf4j</groupId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<artifactId>slf4j-log4j12</artifactId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<version>1.7.7</version>&ndash;&gt;-->
+        <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>log4j</groupId>-->
+            <!--<artifactId>log4j</artifactId>-->
+            <!--<version>1.2.17</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

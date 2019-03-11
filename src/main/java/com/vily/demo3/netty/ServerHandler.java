@@ -1,5 +1,7 @@
 package com.vily.demo3.netty;
 
+import com.alibaba.fastjson.JSON;
+import com.vily.demo3.util.StringUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -21,28 +23,45 @@ import java.net.InetAddress;
 @Component
 @Qualifier("serverHandler")
 @ChannelHandler.Sharable
-public class ServerHandler extends SimpleChannelInboundHandler<String>{
+public class ServerHandler extends SimpleChannelInboundHandler<Object> {
     private static final Logger log = LoggerFactory.getLogger(ServerHandler.class);
 
 
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        super.channelRead(ctx, msg);
+
+
+        byte[] data = StringUtils.toByteArray(msg);
+//
+        log.info("-------sssss" + data.length + "-----" + StringUtils.byteToHex(data));
+
+    }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
-        log.info("client msg:"+msg);
-        String clientIdToLong= ctx.channel().id().asLongText();
-        log.info("client long id:"+clientIdToLong);
-        String clientIdToShort= ctx.channel().id().asShortText();
-        log.info("client short id:"+clientIdToShort);
-        log.info("send to client:"+msg);
-        if(msg.indexOf("bye")!=-1){
-            //close
-            ctx.channel().close();
-        }else{
-            //send to client
-            ctx.channel().writeAndFlush("Yoru msg is:"+msg);
-
-        }
+    protected void messageReceived(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
+        channelHandlerContext.channel().writeAndFlush("Yoru msg is:" + o);
     }
+
+
+    //    @Override
+//    protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
+//
+//
+//        log.info("client msg:"+msg);
+//
+//        String clientIdToLong= ctx.channel().id().asLongText();
+//
+//        String clientIdToShort= ctx.channel().id().asShortText();
+//        log.info("-----client short id:"+clientIdToShort+"-------client long id:"+clientIdToLong);
+//
+//        if(msg.contains("hhh")){
+//            ctx.channel().close();
+//        }else{
+//            ctx.channel().writeAndFlush("Yoru msg is:"+msg);
+//        }
+//
+//    }
 
 
     @Override
@@ -50,7 +69,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String>{
 
         log.info("RamoteAddress : " + ctx.channel().remoteAddress() + " active !");
 
-        ctx.channel().writeAndFlush( "Welcome to " + InetAddress.getLocalHost().getHostName() + " service!\n");
+        ctx.channel().writeAndFlush("你说啥 " + InetAddress.getLocalHost().getHostName() + " service!\n");
 
         super.channelActive(ctx);
     }
@@ -67,5 +86,6 @@ public class ServerHandler extends SimpleChannelInboundHandler<String>{
         log.info("---------------Channel is disconnected");
         super.channelInactive(ctx);
     }
+
 
 }

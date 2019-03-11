@@ -1,4 +1,5 @@
 package com.vily.demo3.netty;
+
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Qualifier("springProtocolInitializer")
-public class StringProtocolInitalizer  extends ChannelInitializer<SocketChannel>{
+public class StringProtocolInitalizer extends ChannelInitializer<SocketChannel> {
     @Autowired
     StringDecoder stringDecoder;
 
