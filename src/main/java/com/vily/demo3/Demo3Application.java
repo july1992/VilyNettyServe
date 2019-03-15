@@ -4,6 +4,7 @@ import com.vily.demo3.push.PushExample;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
 public class Demo3Application implements CommandLineRunner {
@@ -20,5 +21,8 @@ public class Demo3Application implements CommandLineRunner {
         PushExample pushExample=new PushExample();
         pushExample.testSendPush();
     }
+
+
+
 }
 

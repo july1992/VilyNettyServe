@@ -1,13 +1,17 @@
 package com.vily.demo3.comtroller;
 
 
+import com.vily.demo3.Demo3Application;
 import com.vily.demo3.bean.ResultV;
+import com.vily.demo3.config.api.ApiVersion;
 import com.vily.demo3.util.StringUtils;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Access;
 import javax.persistence.PostLoad;
+import javax.websocket.server.PathParam;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -19,7 +23,8 @@ import java.net.URLDecoder;
 @RequestMapping("/user")
 public class TestController {
 
-    @GetMapping(value = "/ble")
+    @ApiVersion(1)
+    @GetMapping(value = "{version}/ble")
     public String ble(@RequestParam(value = "value") String value) {
 
         System.out.println("---------" + value);
@@ -27,8 +32,9 @@ public class TestController {
         return "----";
     }
 
+
     @GetMapping(value = "/test")
-    public String testValue(@RequestParam(value = "data") String data, @RequestParam(value = "value") String value) {
+    public ResultV testValue(@RequestParam(value = "data") String data, @RequestParam(value = "value") String value) {
 
         System.out.println("---------" + value);
         try {
@@ -38,7 +44,11 @@ public class TestController {
             e.printStackTrace();
         }
 
-        return value;
+        ResultV resultV=new ResultV();
+        resultV.setCode(0);
+        resultV.setMessage("hhhhhhhhhhh");
+
+        return resultV;
     }
 
     @CrossOrigin
@@ -79,4 +89,17 @@ public class TestController {
 
         return resultV;
     }
+
+    @PutMapping(value = "/api/sn/devices/{id}")
+    public ResultV resetCode(@PathVariable String id,@RequestBody String json) throws UnsupportedEncodingException {
+
+        System.out.println("------------id:"+id+"-----json"+URLDecoder.decode(json,"utf-8"));
+
+        ResultV resultV=new ResultV();
+        resultV.setCode(0);
+        resultV.setMessage("hhhhhhhhhhh");
+
+        return resultV;
+    }
+
 }
